@@ -1,7 +1,7 @@
 [
   {
     "age-group": "All ages",
-    "population": 763638812
+    "population": 929164282
   },
   {
     "age-group": "0-6",
@@ -9,110 +9,110 @@
   },
   {
     "age-group": "7",
-    "population": 18078426
+    "population": 22818573
   },
   {
     "age-group": "8",
-    "population": 22836959
+    "population": 29011421
   },
   {
     "age-group": "9",
-    "population": 20932734
+    "population": 26565571
   },
   {
     "age-group": "10",
-    "population": 27097602
+    "population": 34430703
   },
   {
     "age-group": "11",
-    "population": 22752473
+    "population": 28806963
   },
   {
     "age-group": "12",
-    "population": 25485778
+    "population": 32348816
   },
   {
     "age-group": "13",
-    "population": 22470207
+    "population": 28387474
   },
   {
     "age-group": "14",
-    "population": 23157384
+    "population": 29171219
   },
   {
     "age-group": "15",
-    "population": 23299497
+    "population": 29325198
   },
   {
     "age-group": "16",
-    "population": 22079806
+    "population": 27686321
   },
   {
     "age-group": "17",
-    "population": 19179012
+    "population": 23886851
   },
   {
     "age-group": "18",
-    "population": 24230172
+    "population": 30218875
   },
   {
     "age-group": "19",
-    "population": 18280414
+    "population": 22621208
   },
   {
     "age-group": "20-24",
-    "population": 92744730
+    "population": 114128000
   },
   {
     "age-group": "25-29",
-    "population": 78779525
+    "population": 95741848
   },
   {
     "age-group": "30-34",
-    "population": 64265391
+    "population": 77036519
   },
   {
     "age-group": "35-39",
-    "population": 57277557
+    "population": 68243458
   },
   {
     "age-group": "40-44",
-    "population": 45631240
+    "population": 53708523
   },
   {
     "age-group": "45-49",
-    "population": 37240564
+    "population": 43357916
   },
   {
     "age-group": "50-54",
-    "population": 28247046
+    "population": 32553475
   },
   {
     "age-group": "55-59",
-    "population": 21463974
+    "population": 24557099
   },
   {
     "age-group": "60-64",
-    "population": 17674268
+    "population": 20160842
   },
   {
     "age-group": "65-69",
-    "population": 11625376
+    "population": 13193461
   },
   {
     "age-group": "70-74",
-    "population": 7640218
+    "population": 8560705
   },
   {
     "age-group": "75-79",
-    "population": 3871311
+    "population": 4263104
   },
   {
     "age-group": "80+",
-    "population": 4398558
+    "population": 4920189
   },
   {
     "age-group": "Age not stated",
-    "population": 2898590
+    "population": 3459950
   }
 ]
