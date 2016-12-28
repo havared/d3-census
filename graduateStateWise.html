@@ -1,237 +1,110 @@
 <!DOCTYPE html>
+<head>
 <meta charset="utf-8">
-<style>
+</head>
+<body>
+  <h3>Literates Gender wise</h3>
+  <div id="chart">
 
-</style>
-<div class="outer">
-  <h1>Stacked-to-Grouped Bars</h1>
-  <h2>Population by age group across US states</h2>
-  <div class="inner">
-	<div class="controls">
-	  <form title="toggle bar chart between stacked and grouped views">
-		<label><input id="toggleStacked" type="radio" name="mode" value="stacked" checked> Stacked</label>
-		<label><input id="toggleGrouped" type="radio" name="mode" value="grouped"> Grouped</label>
-	  </form>
-    </div>
-	<div class="graph">
-	  <svg width="960" height="500"></svg>
-	</div>
   </div>
-</div>
-
-<script src="d3/d3.js"></script>
+<script src="./d3/d3.js"></script>
 <script>
+var margin = {top: 20, right: 20, bottom: 200, left: 60},
+    width = 1350 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
 
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 50, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-/*
- * Scale for bar widths.
- */
 var x = d3.scaleBand()
-    .rangeRound([0, width])
-    .padding(0.1)
-    .align(0.1);
+          .range([0, width])
+          .padding(0.2);
 
-/*
- * Scale for bar heights.
- */
 var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+          .range([height, 0]);
+var color = d3.scaleOrdinal()
+    .range(["lightgreen", "grey"]);
 
-/*
- * Scale for fill color of the categorical data (age groups).
- */
-var colorScale = d3.scaleOrdinal()
-   .range(["#ccebc5", "#a8ddb5"]);
+var xAxis = d3.axisBottom(x);
 
-var columns,
-    numStates,
-	stack,
-	layers,
-	yGroupMax,
-	yStackMax,
-	rect;
+var yAxis = d3.axisLeft(y).tickFormat(d3.format(".2s"));
 
-/*
- * Create request for CSV-data, and then process the response.
- */
-d3.csv("data.csv", addTotalsColumn, function(error, data) {
+
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json("./data/state-gender.json", function(error, data) {
   if (error) throw error;
 
-  data.sort(function(a, b) { return b.total - a.total; });
-
-  columns = data.columns.slice(1);
-  numStates = data.length;
-  stack = d3.stack().keys(columns);
-
-  layers = stack(data).map(function (layer) { return layer.map(function(e, i) {
-      console.log(e.data.State + " ss "+ i + " ss " + layer.key + " ss " + e.data.total);
-      return {
-        state: e.data.State,
-        x: i,
-	      y: e.data[layer.key],
-			  ageGroup: layer.key,
-			  total: e.data.total };
-    });
-  });
-  for (s = 0; s < numStates; ++s) {
+  color.domain(d3.keys(data[3]).filter(function(key) { return key !== "stateName"; }));
+console.log(d3.keys(data[3]).filter(function(key) { return key !== "stateName"; }));
+  data.forEach(function(d) {
     var y0 = 0;
-    for (ag = 0; ag < columns.length; ++ag) {
-      var e = layers[ag][s];
-      e.y0 = y0;
-      y0 += e.y;
-    }
-  }
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
 
-  /*
-   * Calculate the maximum of the total populations,
-   * and the maximum of the age groups.
-   */
-  yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y }); });
-  yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
 
-  /*
-   * Set the domains for the x-, y-axis and categorical color scales.
-   */
-  x.domain(data.map(function(d) { return d.State; }));
-  y.domain([0, d3.max(data, function(d) { return d.total; })]).nice();
-  colorScale.domain(data.columns.slice(1));
+  x.domain(data.map(function(d) { return d.stateName; }));
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
 
-  /*
-   * Render the bars.
-   */
-  g.selectAll(".serie")
-    .data(layers)
-    .enter().append("g")
-      .attr("class", "serie")
-      .attr("fill", function(d) { return colorScale(d[0].ageGroup); })
-    .selectAll("rect")
-    .data(function(d) { return d; })
-    .enter().append("rect")
-      .attr("x", function(d) { return x(d.state); })
-      .attr("y", height)
-      .attr("width", x.bandwidth())
-      .attr("height", 0);
-
-  rect = g.selectAll("rect");
-
-  /*
-   * Initial animation to gradually "grow" the bars from the x-axis.
-   */
-  rect.transition()
-      .delay(function(d, i) { return i; })
-      .attr("y", function(d) { return y(d.y0 + d.y) })
-      .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y) });
-
-  /*
-   * Add SVG title elements for each age group bar segment.
-   */
-  rect.append("svg:title")
-      .text(function(d) { return d.state+", "+d.ageGroup+": "+d.y+" (total: "+d.total+")"; });
-
-  /*
-   * X-axis set-up.
-   * Note that we do not set up the Y-axis, since the bar heights are
-   * scaled dynamically.
-   */
-  g.append("g")
-      .attr("class", "axis axis--x")
+  svg.append("g")
+      .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(xAxis)
+      .selectAll("text")
+          .style("text-anchor", "end")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", function(d) {
+              return "rotate(-65)"
+              });
 
-  /*
-   * Add labels to the axes.
-   */
-  svg.append("text")
-     .attr("class", "axis axis--x")
-	 .attr("text-anchor", "middle")
-	 .attr("transform", "translate("+(width/2)+","+(height+60)+")")
-	 .text("US States");
 
-  svg.append("text")
-     .attr("class", "axis axis--y")
-	 .attr("text-anchor", "middle")
-	 .attr("transform", "translate(0,"+(height/2)+")rotate(-90)")
-	 .attr("dy", "20.0")
-     .text("Population");
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("population");
 
-  /*
-   * Set up the legend explaning the age group categories.
-   */
-  var legend = g.selectAll(".legend")
-    .data(data.columns.slice(1).reverse())
+  var area = svg.selectAll(".area")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x(d.stateName) + ",0)"; });
+
+  area.selectAll("rect")
+      .data(function(d) { return d.ages; })
+    .enter().append("rect")
+      .attr("width", x.bandwidth())
+      .attr("y", function(d) { return y(d.y1); })
+      .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+
+  var legend = svg.selectAll(".legend")
+      .data(color.domain().slice().reverse())
     .enter().append("g")
       .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + (i*20) + ")"; });
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
   legend.append("rect")
-      .attr("x", width - 38)
+      .attr("x", width - 18)
       .attr("width", 18)
       .attr("height", 18)
-      .attr("fill", colorScale);
+      .style("fill", color);
 
   legend.append("text")
-      .attr("x", width - 44)
+      .attr("x", width - 24)
       .attr("y", 9)
       .attr("dy", ".35em")
-      .attr("text-anchor", "end")
+      .style("text-anchor", "end")
       .text(function(d) { return d; });
+
 });
-
-/*
- * Sort the rows of the CSV response in descending order.
- */
-function addTotalsColumn(d, i, columns) {
-  for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
-  d.total = t;
-  return d;
-}
-
-d3.selectAll("input").on("change", change);
-window.document.getElementById("toggleStacked").focus();
-
-function change() {
-  if (this.value === "grouped") transitionGrouped();
-  else transitionStacked();
-}
-
-/*
- * Reset the domain for the y-axis scaling to maximum of the age group totals,
- * transition the x-axis changes to the bar widths, and then transition the
- * y-axis changes to the bar heights.
- */
-function transitionGrouped() {
-  y.domain([0, yGroupMax]);
-
-  rect.transition()
-      .duration(500)
-      .delay(function(d, i) { return i; })
-        .attr("x", function(d) { return x(d.state) + 0.5 + columns.indexOf(d.ageGroup)*(x.bandwidth()/columns.length); })
-        .attr("width", x.bandwidth() / columns.length)
-      .transition()
-         .attr("y", function(d) { return y(d.y); })
-         .attr("height", function(d) { return height - y(d.y); });
-}
-
-/*
- * Reset the domain for the y-axis scaling to maximum of the population totals,
- * transition the y-axis changes to the bar heights, and then transition the
- * x-axis changes to the bar widths.
- */
-function transitionStacked() {
-  y.domain([0, yStackMax]);
-
-  rect.transition()
-      .duration(500)
-      .delay(function(d, i) { return i; })
-        .attr("y", function(d) { return y(d.y0 + d.y); })
-        .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); })
-      .transition()
-        .attr("x", function(d) { return x(d.state); })
-        .attr("width", x.bandwidth());
-}
 </script>
+</body>
+</html>

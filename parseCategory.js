@@ -12,33 +12,83 @@ rl.on('line', function(line) {
   if(row[3] === 'INDIA' && row[5]=="All ages" && row[4] === 'Total'){
     if(categories.length == 0){
       categories.push({
-        'Literate': +row[12],
-        'Literate without Education': +row[15],
-        'Below Primary': +row[18],
-        'Primary': +row[21],
-        'Middle': +row[24],
-        'Matric/Secondary': +row[27],
-        'Higher secondary/Intermediate/Pre-University/Senior secondary': +row[30],
-        'Non-technical diploma or certificate not equal to degree': +row[33],
-        'Technical diploma or certificate not equal to degree': +row[36],
-        'Graduate & above': +row[39],
-        'Unclassified' : +row[42]
-                     });
+        'label' : 'Literate',
+        'population': +row[12]
+      });
+      categories.push({
+        'label' : 'WO Education',
+        'population': +row[15]
+      });
+      categories.push({
+        'label' : 'Below Primary',
+        'population': +row[18]
+      });
+      categories.push({
+        'label' : 'Primary',
+        'population': +row[21]
+      });
+      categories.push({
+        'label' : 'Middle',
+        'population': +row[24]
+      });
+      categories.push({
+        'label' : 'Matric/Secondary',
+        'population': +row[27]
+      });
+      categories.push({
+        'label' : 'Non-technical',
+        'population': +row[33]
+      });
+      categories.push({
+        'label' : 'Technical',
+        'population': +row[36]
+      });
+      categories.push({
+        'label' : 'Graduate',
+        'population': +row[39]
+      });
+      categories.push({
+        'label' : 'Unclassified',
+        'population': +row[42]
+      });
      }else{
-        categories[0]['Literate'] =  categories[0]['Literate'] + +row[12];
-        categories[0]['Literate without Education'] = categories[0]['Literate without Education'] + +row[15];
-        categories[0]['Below Primary'] = categories[0]['Below Primary'] + +row[18];
-        categories[0]['Primary'] = categories[0]['Primary'] + +row[21];
-        categories[0]['Middle'] = categories[0]['Middle'] + +row[24];
-        categories[0]['Matric/Secondary'] = categories[0]['Matric/Secondary'] + +row[27];
-        categories[0]['Higher secondary/Intermediate/Pre-University/Senior secondary'] =  categories[0]['Higher secondary/Intermediate/Pre-University/Senior secondary'] + +row[30];
-        categories[0]['Non-technical diploma or certificate not equal to degree'] =  categories[0]['Non-technical diploma or certificate not equal to degree'] + +row[33];
-        categories[0]['Technical diploma or certificate not equal to degree'] =  categories[0]['Technical diploma or certificate not equal to degree'] + +row[36];
-        categories[0]['Graduate & above'] = categories[0]['Graduate & above'] + +row[39];
-        categories[0]['Unclassified'] = categories[0]['Unclassified'] + +row[42];
-      }
+       var index = getIndex('Literate');
+       categories[index]['population'] = categories[index]['population'] + +row[12];
+       index = getIndex('WO Education');
+       categories[index]['population'] = categories[index]['population'] + +row[15];
+       index = getIndex('Below Primary');
+       categories[index]['population'] = categories[index]['population'] + +row[18];
+       index = getIndex('Primary');
+       categories[index]['population'] = categories[index]['population'] + +row[21];
+       index = getIndex('Middle');
+       categories[index]['population'] = categories[index]['population'] + +row[24];
+       index = getIndex('Matric/Secondary');
+       categories[index]['population'] = categories[index]['population'] + +row[27];
+       index = getIndex('Non-technical');
+       categories[index]['population'] = categories[index]['population'] + +row[33];
+       index = getIndex('Technical');
+       categories[index]['population'] = categories[index]['population'] + +row[36];
+       index = getIndex('Graduate');
+       categories[index]['population'] = categories[index]['population'] + +row[39];
+       index = getIndex('Unclassified');
+       categories[index]['population'] = categories[index]['population'] + +row[42];
+     }
     }
 });
 rl.on('close', function() {
   fs.writeFile('./data/category.json', JSON.stringify(categories,null,2),'utf-8');
 });
+
+
+function getIndex(label){
+  var i = categories.length;
+  var index = -1;
+  //console.log(categories[0]['label']);
+  while(i--) {
+    if(categories[i]['label'] === label) {
+        index = i;
+        break;
+    }
+  }
+  return index;
+}

@@ -12,7 +12,7 @@ function findIndex(stateName){
   var i = stateGender.length;
   var index = -1;
   while(i--) {
-    if(stateName == stateGender[i]['state-name']) {
+    if(stateName == stateGender[i]['stateName']) {
         index = i;
         break;
     }
@@ -25,15 +25,13 @@ rl.on('line', function(line) {
   if(row[4] === "Total" && row[5] === "All ages"){
     var index = findIndex(row[3]);
     eachObj = {};
-    eachObj['total-graduates'] = +row[39];
-    eachObj['total-female-graduates'] = +row[40];
-    eachObj['total-male-graduates'] = +row[41];
-    eachObj['state-name'] = row[3];
+    eachObj['male'] = +row[40];
+    eachObj['female'] = +row[41];
+    eachObj['stateName'] = row[3];
     if(index !== -1){
       var result = stateGender[index];
-      result['total-graduates'] += eachObj['total-graduates'];
-      result['total-female-graduates'] += eachObj['total-female-graduates'];
-      result['total-male-graduates'] += eachObj['total-male-graduates'];
+      result['male'] += eachObj['male'];
+      result['female'] += eachObj['female'];
       stateGender[index] = result;
     }else{
       stateGender.push(eachObj);

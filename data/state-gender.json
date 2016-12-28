@@ -1,218 +1,177 @@
 [
   {
-    "total-graduates": 68288971,
-    "total-female-graduates": 42120460,
-    "total-male-graduates": 26168511,
-    "state-name": "INDIA"
+    "male": 426555,
+    "female": 265929,
+    "stateName": "State - JAMMU & KASHMIR"
   },
   {
-    "total-graduates": 653764,
-    "total-female-graduates": 401279,
-    "total-male-graduates": 252485,
-    "state-name": "JAMMU & KASHMIR"
+    "male": 293449,
+    "female": 223652,
+    "stateName": "State - HIMACHAL PRADESH"
   },
   {
-    "total-graduates": 446609,
-    "total-female-graduates": 251164,
-    "total-male-graduates": 195445,
-    "state-name": "HIMACHAL PRADESH"
+    "male": 960456,
+    "female": 959213,
+    "stateName": "State - PUNJAB"
   },
   {
-    "total-graduates": 1760846,
-    "total-female-graduates": 873776,
-    "total-male-graduates": 887070,
-    "state-name": "PUNJAB"
+    "male": 111494,
+    "female": 94542,
+    "stateName": "State - CHANDIGARH"
   },
   {
-    "total-graduates": 194453,
-    "total-female-graduates": 104748,
-    "total-male-graduates": 89705,
-    "state-name": "CHANDIGARH"
+    "male": 568963,
+    "female": 433434,
+    "stateName": "State - UTTARAKHAND"
   },
   {
-    "total-graduates": 910288,
-    "total-female-graduates": 512068,
-    "total-male-graduates": 398220,
-    "state-name": "UTTARAKHAND"
+    "male": 1183849,
+    "female": 810751,
+    "stateName": "State - HARYANA"
   },
   {
-    "total-graduates": 1877085,
-    "total-female-graduates": 1102809,
-    "total-male-graduates": 774276,
-    "state-name": "HARYANA"
+    "male": 1636077,
+    "female": 1282115,
+    "stateName": "State - NCT OF DELHI"
   },
   {
-    "total-graduates": 2757844,
-    "total-female-graduates": 1535972,
-    "total-male-graduates": 1221872,
-    "state-name": "NCT OF DELHI"
+    "male": 2461922,
+    "female": 1064619,
+    "stateName": "State - RAJASTHAN"
   },
   {
-    "total-graduates": 3063282,
-    "total-female-graduates": 2086247,
-    "total-male-graduates": 977035,
-    "state-name": "RAJASTHAN"
+    "male": 7086446,
+    "female": 3811759,
+    "stateName": "State - UTTAR PRADESH"
   },
   {
-    "total-graduates": 9919838,
-    "total-female-graduates": 6378138,
-    "total-male-graduates": 3541700,
-    "state-name": "UTTAR PRADESH"
+    "male": 2471458,
+    "female": 764190,
+    "stateName": "State - BIHAR"
   },
   {
-    "total-graduates": 3061676,
-    "total-female-graduates": 2326092,
-    "total-male-graduates": 735584,
-    "state-name": "BIHAR"
+    "male": 24812,
+    "female": 18036,
+    "stateName": "State - SIKKIM"
   },
   {
-    "total-graduates": 32669,
-    "total-female-graduates": 19290,
-    "total-male-graduates": 13379,
-    "state-name": "SIKKIM"
+    "male": 58823,
+    "female": 28114,
+    "stateName": "State - ARUNACHAL PRADESH"
   },
   {
-    "total-graduates": 53606,
-    "total-female-graduates": 36430,
-    "total-male-graduates": 17176,
-    "state-name": "ARUNACHAL PRADESH"
+    "male": 96513,
+    "female": 68531,
+    "stateName": "State - NAGALAND"
   },
   {
-    "total-graduates": 89718,
-    "total-female-graduates": 53023,
-    "total-male-graduates": 36695,
-    "state-name": "NAGALAND"
+    "male": 178447,
+    "female": 115688,
+    "stateName": "State - MANIPUR"
   },
   {
-    "total-graduates": 225620,
-    "total-female-graduates": 135082,
-    "total-male-graduates": 90538,
-    "state-name": "MANIPUR"
+    "male": 56437,
+    "female": 38959,
+    "stateName": "State - MIZORAM"
   },
   {
-    "total-graduates": 49621,
-    "total-female-graduates": 29527,
-    "total-male-graduates": 20094,
-    "state-name": "MIZORAM"
+    "male": 107556,
+    "female": 58240,
+    "stateName": "State - TRIPURA"
   },
   {
-    "total-graduates": 137812,
-    "total-female-graduates": 88621,
-    "total-male-graduates": 49191,
-    "state-name": "TRIPURA"
+    "male": 77020,
+    "female": 77942,
+    "stateName": "State - MEGHALAYA"
   },
   {
-    "total-graduates": 90519,
-    "total-female-graduates": 46311,
-    "total-male-graduates": 44208,
-    "state-name": "MEGHALAYA"
+    "male": 718327,
+    "female": 411992,
+    "stateName": "State - ASSAM"
   },
   {
-    "total-graduates": 1011345,
-    "total-female-graduates": 639241,
-    "total-male-graduates": 372104,
-    "state-name": "ASSAM"
+    "male": 3463977,
+    "female": 1891297,
+    "stateName": "State - WEST BENGAL"
   },
   {
-    "total-graduates": 4827817,
-    "total-female-graduates": 3088673,
-    "total-male-graduates": 1739144,
-    "state-name": "WEST BENGAL"
+    "male": 1039975,
+    "female": 492195,
+    "stateName": "State - JHARKHAND"
   },
   {
-    "total-graduates": 1328477,
-    "total-female-graduates": 906174,
-    "total-male-graduates": 422303,
-    "state-name": "JHARKHAND"
+    "male": 1303987,
+    "female": 661902,
+    "stateName": "State - ODISHA"
   },
   {
-    "total-graduates": 1783797,
-    "total-female-graduates": 1174184,
-    "total-male-graduates": 609613,
-    "state-name": "ODISHA"
+    "male": 799269,
+    "female": 417319,
+    "stateName": "State - CHHATTISGARH"
   },
   {
-    "total-graduates": 1018853,
-    "total-female-graduates": 659081,
-    "total-male-graduates": 359772,
-    "state-name": "CHHATTISGARH"
+    "male": 2311433,
+    "female": 1279956,
+    "stateName": "State - MADHYA PRADESH"
   },
   {
-    "total-graduates": 3222802,
-    "total-female-graduates": 2051127,
-    "total-male-graduates": 1171675,
-    "state-name": "MADHYA PRADESH"
+    "male": 2083498,
+    "female": 1388297,
+    "stateName": "State - GUJARAT"
   },
   {
-    "total-graduates": 3174158,
-    "total-female-graduates": 1891932,
-    "total-male-graduates": 1282226,
-    "state-name": "GUJARAT"
+    "male": 8774,
+    "female": 4575,
+    "stateName": "State - DAMAN & DIU"
   },
   {
-    "total-graduates": 12802,
-    "total-female-graduates": 8425,
-    "total-male-graduates": 4377,
-    "state-name": "DAMAN & DIU"
+    "male": 13880,
+    "female": 7899,
+    "stateName": "State - DADRA & NAGAR HAVELI"
   },
   {
-    "total-graduates": 19174,
-    "total-female-graduates": 12227,
-    "total-male-graduates": 6947,
-    "state-name": "DADRA & NAGAR HAVELI"
+    "male": 5730823,
+    "female": 3774694,
+    "stateName": "State - MAHARASHTRA"
   },
   {
-    "total-graduates": 8639081,
-    "total-female-graduates": 5167671,
-    "total-male-graduates": 3471410,
-    "state-name": "MAHARASHTRA"
+    "male": 4125374,
+    "female": 2182506,
+    "stateName": "State - ANDHRA PRADESH"
   },
   {
-    "total-graduates": 5577387,
-    "total-female-graduates": 3632622,
-    "total-male-graduates": 1944765,
-    "state-name": "ANDHRA PRADESH"
+    "male": 2799580,
+    "female": 1696871,
+    "stateName": "State - KARNATAKA"
   },
   {
-    "total-graduates": 4043647,
-    "total-female-graduates": 2489209,
-    "total-male-graduates": 1554438,
-    "state-name": "KARNATAKA"
+    "male": 77010,
+    "female": 75121,
+    "stateName": "State - GOA"
   },
   {
-    "total-graduates": 146828,
-    "total-female-graduates": 74077,
-    "total-male-graduates": 72751,
-    "state-name": "GOA"
+    "male": 2682,
+    "female": 1606,
+    "stateName": "State - LAKSHADWEEP"
   },
   {
-    "total-graduates": 2302,
-    "total-female-graduates": 1458,
-    "total-male-graduates": 844,
-    "state-name": "LAKSHADWEEP"
+    "male": 1187364,
+    "female": 1474710,
+    "stateName": "State - KERALA"
   },
   {
-    "total-graduates": 2531321,
-    "total-female-graduates": 1131336,
-    "total-male-graduates": 1399985,
-    "state-name": "KERALA"
+    "male": 3495384,
+    "female": 2577695,
+    "stateName": "State - TAMIL NADU"
   },
   {
-    "total-graduates": 5457742,
-    "total-female-graduates": 3119342,
-    "total-male-graduates": 2338400,
-    "state-name": "TAMIL NADU"
+    "male": 87072,
+    "female": 67712,
+    "stateName": "State - PUDUCHERRY"
   },
   {
-    "total-graduates": 142029,
-    "total-female-graduates": 79482,
-    "total-male-graduates": 62547,
-    "state-name": "PUDUCHERRY"
-  },
-  {
-    "total-graduates": 24159,
-    "total-female-graduates": 13622,
-    "total-male-graduates": 10537,
-    "state-name": "ANDAMAN & NICOBAR ISLANDS"
+    "male": 13832,
+    "female": 10748,
+    "stateName": "State - ANDAMAN & NICOBAR ISLANDS"
   }
 ]

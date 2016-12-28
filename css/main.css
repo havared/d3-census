@@ -1,0 +1,4 @@
+.bar { fill: lightgreen; }
+.bar:hover{
+  fill: grey;
+}

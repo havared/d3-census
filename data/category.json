@@ -1,15 +1,38 @@
 [
   {
-    "Literate": 929164282,
-    "Literate without Education": 42917688,
-    "Below Primary": 187922838,
-    "Primary": 230286790,
-    "Middle": 165085953,
-    "Matric/Secondary": 123969998,
-    "Higher secondary/Intermediate/Pre-University/Senior secondary": 90159789,
-    "Non-technical diploma or certificate not equal to degree": 1162928,
-    "Technical diploma or certificate not equal to degree": 8290083,
-    "Graduate & above": 75595327,
-    "Unclassified": 3772888
+    "label": "WO Education",
+    "population": 42917688
+  },
+  {
+    "label": "Below Primary",
+    "population": 187922838
+  },
+  {
+    "label": "Primary",
+    "population": 230286790
+  },
+  {
+    "label": "Middle",
+    "population": 165085953
+  },
+  {
+    "label": "Matric/Secondary",
+    "population": 123969998
+  },
+  {
+    "label": "Non-technical",
+    "population": 1162928
+  },
+  {
+    "label": "Technical",
+    "population": 8290083
+  },
+  {
+    "label": "Graduate",
+    "population": 75595327
+  },
+  {
+    "label": "Unclassified",
+    "population": 3772888
   }
 ]
